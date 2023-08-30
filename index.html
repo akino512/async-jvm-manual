@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="./global.css">
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+<script>
+  let last = 0
+  const titles = []
+</script>
+
+<script src="./compoent/MContent.js"></script>
+<script src="./compoent/MFull.js"></script>
+<script src="./compoent/MImage.js"></script>
+<script src="./compoent/MMedia.js"></script>
+<script src="./compoent/MMenu.js"></script>
+<script src="./compoent/MNavi.js"></script>
+<script src="./compoent/MParagraph.js"></script>
+<script src="./compoent/MPrevNext.js"></script>
+<script src="./compoent/MReference.js"></script>
+<script src="./compoent/MText.js"></script>
+<script src="./compoent/MTitle.js"></script>
+<script src="./compoent/MVideo.js"></script>
+
+
+<script src="./section/Section1.js"></script>
+<script src="./section/Section2.js"></script>
+<script src="./section/Section3.js"></script>
+<script src="./section/Section4.js"></script>
+<script src="./section/Section5.js"></script>
+<script src="./section/Section6.js"></script>
+<script src="./section/Section7.js"></script>
+<script src="./section/Section8.js"></script>
+<script src="./section/Section9.js"></script>
+<script src="./section/Section10.js"></script>
+<script src="./section/Section11.js"></script>
+<script src="./section/Section12.js"></script>
+
+<script>
+  const app = document.getElementById("app");
+  app.style.display = "flex"
+  app.style.width = "100%"
+  app.style.minHeight = "100vh"
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const current = parseInt(urlParams.get("section"))
+
+  const navi = MNavi(current, last)
+  const naviBack = MNaviBack()
+  app.appendChild(naviBack)
+  app.appendChild(navi)
+  try {
+    const section = eval("Section" + current)()
+    const content = MContent()
+    content.appendChild(section)
+    app.appendChild(content)
+    for (const ref in section.refs || []) {
+      document.getElementById(ref).replaceWith(MReference(section.refs[ref]))
+    }
+  } catch (e) {
+    console.log(e);
+    alert("section not found")
+    location.replace("?section=1")
+  }
+</script>
+
+</html>
