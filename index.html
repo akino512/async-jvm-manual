@@ -53,20 +53,23 @@
 
   const navi = MNavi(current, last)
   const naviBack = MNaviBack()
+  const content = MContent()
+  const section = (() => {
+    try {
+      return eval("Section" + current)()
+    } catch (e) {
+      alert("section not found")
+      location.replace("?section=1")
+    }
+  })()
+
+  content.appendChild(section)
   app.appendChild(naviBack)
   app.appendChild(navi)
-  try {
-    const section = eval("Section" + current)()
-    const content = MContent()
-    content.appendChild(section)
-    app.appendChild(content)
-    for (const ref in section.refs || []) {
-      document.getElementById(ref).replaceWith(MReference(section.refs[ref]))
-    }
-  } catch (e) {
-    console.log(e);
-    alert("section not found")
-    location.replace("?section=1")
+  app.appendChild(content)
+
+  for (const ref in section.refs || []) {
+    document.getElementById(ref).replaceWith(MReference(section.refs[ref]))
   }
 </script>
 
