@@ -1,10 +1,8 @@
-const Section2 = function () {
-    const title = "前言"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "前言",
+    read: function () {
         const element = document.createElement("div")
-        const t = MTitle(title)
+        const t = MTitle(this.title)
 
         const p1 = MParagraph()
         const t1 = MText(`
@@ -29,4 +27,4 @@ const Section2 = function () {
         element.appendChild(p2)
         return element
     }
-}();
+})

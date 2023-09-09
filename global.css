@@ -40,6 +40,12 @@ a:hover {
     text-decoration: underline;
 }
 
+.not-allowed {
+    background-color: grey !important;
+    color: gainsboro !important;
+    cursor: not-allowed !important;
+}
+
 img,
 video {
     max-width: 100%;

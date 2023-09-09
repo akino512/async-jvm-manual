@@ -1,10 +1,8 @@
-const Section6 = function () {
-    const title = "问题3：线程阻塞1（中）"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "问题3：线程阻塞1（中）",
+    read: function () {
         const element = document.createElement("div")
-        const t = MTitle(title)
+        const t = MTitle(this.title)
 
         const p1 = MParagraph()
         const i1_1 = MMedia("image-one_thread_per_con­nec­tion", [MImage("./asset/image/one_thread_per_con­nec­tion.svg")])
@@ -26,7 +24,7 @@ const Section6 = function () {
         随着开源社区的蓬勃发展，大量基于异步通信的应用涌现，这其中也包括大名鼎鼎的Node.js。<br />
         `)
         // 而其后The Reactive Manifesto<i id="href_reactivemanifesto"></i>的提出无疑是异步软件应用发展史上的又一里程碑。<br />
-        
+
         const p3 = MParagraph()
         const i3 = MMedia("image-spring_flux",
             [MImage("./asset/image/spring_flux(1).png"), MImage("./asset/image/spring_flux(2).png")])
@@ -62,13 +60,13 @@ const Section6 = function () {
         element.appendChild(p2)
         element.appendChild(p3)
         element.appendChild(p4)
-        element.refs = {
-            // href_reactivemanifesto: "https://www.reactivemanifesto.org",
-            href_netty: "https://netty.io/",
-            href_springflux: "https://spring.io/guides/gs/reactive-rest-service",
-            href_href_reactorpattern: "https://en.wikipedia.org/wiki/Reactor_pattern",
-            href_introductiontovertx: "https://vertx.io/introduction-to-vertx-and-reactive",
-        }
         return element
+    },
+    refs: {
+        // href_reactivemanifesto: "https://www.reactivemanifesto.org",
+        href_netty: "https://netty.io/",
+        href_springflux: "https://spring.io/guides/gs/reactive-rest-service",
+        href_href_reactorpattern: "https://en.wikipedia.org/wiki/Reactor_pattern",
+        href_introductiontovertx: "https://vertx.io/introduction-to-vertx-and-reactive",
     }
-}();
+})

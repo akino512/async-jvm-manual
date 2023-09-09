@@ -1,4 +1,4 @@
-const MNavi = (current,last) => {
+const MNavi = () => {
     const element = document.createElement("div");
     element.style.width = "280px"
     element.style.position = "fixed"
@@ -7,8 +7,8 @@ const MNavi = (current,last) => {
     element.style.left = 0;
     element.style.top = 0;
 
-    const menu = MMenu(current);
-    const pn = MPrevNext(current,last);
+    const menu = MMenu();
+    const pn = MPrevNext();
 
     element.appendChild(menu)
     element.appendChild(pn)

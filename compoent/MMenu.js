@@ -1,4 +1,4 @@
-const MMenu = (current) => {
+const MMenu = () => {
     const element = document.createElement("div")
     element.style.width = "100%"
     element.style.height = "calc(100% - 200px)"
@@ -10,17 +10,24 @@ const MMenu = (current) => {
     mulu.innerHTML = "目录"
 
     element.appendChild(mulu)
-    for (const idx in titles) {
+    const titles = []
+    for (const idx in GLOBAL.sections) {
+        const section = GLOBAL.sections[idx]
         const title = document.createElement("a")
-        const number = parseInt(idx) + 1
-        title.innerText = `[${String(number).padStart(2, "0")}]${titles[idx]}`
+        const current = parseInt(idx) + 1
+        title.innerText = `[${String(current).padStart(2, "0")}]${section.title}`
         title.style.display = "block"
-        if(idx == current - 1){
-            title.style.color = "var(--yellow)"
-        } else {
-            title.href = `?section=${number}`
+        titles.push(title)
+        title.onclick = function () {
+            GLOBAL.current = current
         }
         element.appendChild(title)
     }
+    GLOBAL.currentWatchers.push(() => {
+        for (const item of titles) {
+            item.style.color = ""
+        }
+        titles[GLOBAL.current - 1].style.color = "var(--yellow)"
+    })
     return element
 }

@@ -1,10 +1,8 @@
-const Section4 = function () {
-    const title = "问题2：线程安全2"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "问题2：线程安全2",
+    read: function () {
         const element = document.createElement("div")
-        const t = MTitle(title)
+        const t = MTitle(this.title)
 
         const p1 = MParagraph()
         const i1 = MMedia("image-app-2-1", [MImage("./asset/image/app-2-1.png")])
@@ -49,4 +47,4 @@ const Section4 = function () {
 
         return element
     }
-}();
+})

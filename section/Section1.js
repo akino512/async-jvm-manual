@@ -1,8 +1,6 @@
-const Section1 = function () {
-    const title = "首页"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "首页",
+    read: function () {
         const element = document.createElement("div")
 
         const span = document.createElement("span")
@@ -13,5 +11,5 @@ const Section1 = function () {
         full.appendChild(span)
         element.appendChild(full)
         return element
-    }
-}();
+    },
+})

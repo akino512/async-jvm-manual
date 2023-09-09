@@ -10,9 +10,21 @@
 <body>
   <div id="app"></div>
 </body>
+
 <script>
-  let last = 0
-  const titles = []
+  const GLOBAL = {
+    get current() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const secNum = parseInt(urlParams.get("section"))
+      return this.sections[secNum - 1] == undefined ? 1 : secNum
+    },
+    set current(value) {
+      window.history.replaceState(null, null, `?section=${value}`);
+      for (const wat of this.currentWatchers) { wat() }
+    },
+    currentWatchers: [],
+    sections: [],
+  }
 </script>
 
 <script src="./compoent/MContent.js"></script>
@@ -27,7 +39,6 @@
 <script src="./compoent/MText.js"></script>
 <script src="./compoent/MTitle.js"></script>
 <script src="./compoent/MVideo.js"></script>
-
 
 <script src="./section/Section1.js"></script>
 <script src="./section/Section2.js"></script>
@@ -48,29 +59,15 @@
   app.style.width = "100%"
   app.style.minHeight = "100vh"
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const current = parseInt(urlParams.get("section"))
-
-  const navi = MNavi(current, last)
+  const navi = MNavi()
   const naviBack = MNaviBack()
   const content = MContent()
-  const section = (() => {
-    try {
-      return eval("Section" + current)()
-    } catch (e) {
-      alert("section not found")
-      location.replace("?section=1")
-    }
-  })()
 
-  content.appendChild(section)
-  app.appendChild(naviBack)
   app.appendChild(navi)
+  app.appendChild(naviBack)
   app.appendChild(content)
+  GLOBAL.current = GLOBAL.current
 
-  for (const ref in section.refs || []) {
-    document.getElementById(ref).replaceWith(MReference(section.refs[ref]))
-  }
 </script>
 
 </html>

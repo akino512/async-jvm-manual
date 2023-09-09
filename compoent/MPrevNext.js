@@ -1,4 +1,5 @@
-const MPrevNext = (current, last) => {
+const MPrevNext = () => {
+    const last = GLOBAL.sections.length
     const element = document.createElement("div");
     element.style.width = "100%"
     element.style.display = "flex"
@@ -13,16 +14,9 @@ const MPrevNext = (current, last) => {
     prev.style.alignItems = "center"
     prev.style.height = "center"
     prev.style.userSelect = "none"
-    if (current == 1) {
-        prev.innerText = "没有了"
-        prev.style.backgroundColor = "grey"
-        prev.style.color = "gainsboro"
-        prev.style.cursor = "not-allowed"
-    } else {
-        prev.innerText = "上一页"
-        prev.style.background = "var(--green1)"
-        prev.style.cursor = "w-resize"
-    }
+    prev.innerText = "上一页"
+    prev.style.background = "var(--green1)"
+    prev.style.cursor = "w-resize"
 
     const next = document.createElement("div");
     next.style.display = "flex"
@@ -32,28 +26,23 @@ const MPrevNext = (current, last) => {
     next.style.alignItems = "center"
     next.style.height = "center"
     next.style.userSelect = "none"
-    if (current == last) {
-        next.innerText = "没有了"
-        next.style.backgroundColor = "grey"
-        next.style.color = "gainsboro"
-        next.style.cursor = "not-allowed"
-    } else {
-        next.innerText = "下一页"
-        next.style.background = "var(--green1)"
-        next.style.cursor = "e-resize"
-    }
+    next.innerText = "下一页"
+    next.style.background = "var(--green1)"
+    next.style.cursor = "e-resize"
 
     const line = document.createElement("div");
     line.style.width = "2%"
 
     prev.onclick = function () {
-        if (current !== 1) { location.replace(`?section=${current - 1}`) }
+        if (GLOBAL.current !== 1) {
+            GLOBAL.current -= 1
+        }
     }
-
     next.onclick = function () {
-        if (current !== last) { location.replace(`?section=${current + 1}`) }
+        if (GLOBAL.current !== last) {
+            GLOBAL.current += 1
+        }
     }
-
     document.onkeydown = (event) => {
         if (event.key === "ArrowLeft") {
             prev.click()
@@ -61,7 +50,16 @@ const MPrevNext = (current, last) => {
             next.click()
         }
     }
-
+    GLOBAL.currentWatchers.push(() => {
+        if (GLOBAL.current === 1) {
+            prev.classList.add("not-allowed")
+        } else if (GLOBAL.current === last) {
+            next.classList.add("not-allowed")
+        } else {
+            prev.classList.remove("not-allowed")
+            next.classList.remove("not-allowed")
+        }
+    })
     element.appendChild(prev)
     element.appendChild(line)
     element.appendChild(next)

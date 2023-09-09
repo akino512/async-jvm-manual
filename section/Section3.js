@@ -1,10 +1,8 @@
-const Section3 = function () {
-    const title = "问题1：线程安全1"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "问题1：线程安全1",
+    read: function () {
         const element = document.createElement("div")
-        const t = MTitle(title)
+        const t = MTitle(this.title)
 
         const p1 = MParagraph()
         const i1 = MMedia("image-app-1-1", [MImage("./asset/image/app-1-1.png")])
@@ -42,9 +40,9 @@ const Section3 = function () {
         element.appendChild(p1)
         element.appendChild(p2)
         element.appendChild(p3)
-        element.refs = {
-            ref_okhttp: "https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp"
-        }
         return element
+    },
+    refs: {
+        ref_okhttp: "https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp"
     }
-}();
+})

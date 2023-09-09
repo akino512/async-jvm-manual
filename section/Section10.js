@@ -1,10 +1,8 @@
-const Section10 = function () {
-    const title = "问题5：回调地狱（下）"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "问题5：回调地狱（下）",
+    read: function () {
         const element = document.createElement("div")
-        const t = MTitle(title)
+        const t = MTitle(this.title)
 
         const p1 = MParagraph()
         const t1 = MText(`Kotlin是能够兼容Java代码的JVM languages。与其他许多现代编程语言一样，Kotlin提供原生的协程（coroutine）<i id="href_coroutine"></i>支持。<br />
@@ -57,13 +55,13 @@ const Section10 = function () {
         element.appendChild(p2)
         element.appendChild(p3)
         element.appendChild(p4)
-        element.refs = {
-            href_coroutine: "https://kotlinlang.org/docs/coroutines-guide.html",
-            href_extensionfunction: "https://kotlinlang.org/docs/extensions.html#extension-functions",
-            href_dispatchers: "https://kotlinlang.org/docs/coroutine-context-and-dispatchers.html#dispatchers-and-threads",
-            href_suspend: "https://kotlinlang.org/docs/coroutines-basics.html#extract-function-refactoring",
-            href_lambda: "https://kotlinlang.org/docs/lambdas.html#passing-trailing-lambdas",
-        }
         return element
+    },
+    refs: {
+        href_coroutine: "https://kotlinlang.org/docs/coroutines-guide.html",
+        href_extensionfunction: "https://kotlinlang.org/docs/extensions.html#extension-functions",
+        href_dispatchers: "https://kotlinlang.org/docs/coroutine-context-and-dispatchers.html#dispatchers-and-threads",
+        href_suspend: "https://kotlinlang.org/docs/coroutines-basics.html#extract-function-refactoring",
+        href_lambda: "https://kotlinlang.org/docs/lambdas.html#passing-trailing-lambdas",
     }
-}();
+})

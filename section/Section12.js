@@ -1,8 +1,6 @@
-const Section12 = function () {
-    const title = "尾页"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "尾页",
+    read: function () {
         const element = document.createElement("div")
 
         const span = document.createElement("span")
@@ -14,4 +12,4 @@ const Section12 = function () {
         element.appendChild(full)
         return element
     }
-}();
+})

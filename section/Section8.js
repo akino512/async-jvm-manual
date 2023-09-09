@@ -1,10 +1,8 @@
-const Section8 = function () {
-    const title = "问题4：线程阻塞2"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "问题4：线程阻塞2",
+    read: function () {
         const element = document.createElement("div")
-        const t = MTitle(title)
+        const t = MTitle(this.title)
 
         const p1 = MParagraph()
         const i1 = MMedia("image-app-4-1", [MImage("./asset/image/app-4-1.png")])
@@ -41,11 +39,10 @@ const Section8 = function () {
         element.appendChild(p1)
         element.appendChild(p2)
         element.appendChild(p3)
-
-        element.refs = {
-            href_vertxeventloop: "https://vertx.io/docs/vertx-core/java/#_reactor_and_multi_reactor",
-            href_workerpool: "https://vertx.io/docs/vertx-core/java/#_verticle_worker_pool"
-        }
         return element
+    },
+    refs: {
+        href_vertxeventloop: "https://vertx.io/docs/vertx-core/java/#_reactor_and_multi_reactor",
+        href_workerpool: "https://vertx.io/docs/vertx-core/java/#_verticle_worker_pool"
     }
-}();
+})

@@ -1,10 +1,8 @@
-const Section5 = function () {
-    const title = "问题3：线程阻塞1（上）"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "问题3：线程阻塞1（上）",
+    read: function () {
         const element = document.createElement("div")
-        const t = MTitle(title)
+        const t = MTitle(this.title)
 
         const p1 = MParagraph()
         const v1 = MMedia("video-app-3-1", [MVideo("./asset/video/app-3-1.mp4")])
@@ -60,4 +58,4 @@ const Section5 = function () {
         element.appendChild(p4)
         return element
     }
-}();
+})

@@ -1,10 +1,8 @@
-const Section11 = function () {
-    const title = "进阶异步编程"
-    titles.push(title)
-    last++
-    return () => {
+GLOBAL.sections.push({
+    title: "进阶异步编程",
+    read: function () {
         const element = document.createElement("div")
-        const t = MTitle(title)
+        const t = MTitle(this.title)
         const p1 = MParagraph()
         const v1 = MMedia("video-future_coordination", [MVideo("./asset/video/future_coordination.mp4")])
         const i1 = MMedia("image-future_coordination", [MImage("./asset/image/future_coordination.png")])
@@ -20,4 +18,4 @@ const Section11 = function () {
         element.appendChild(p1)
         return element
     }
-}();
+})
