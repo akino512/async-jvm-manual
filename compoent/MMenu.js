@@ -17,9 +17,12 @@ const MMenu = () => {
         const current = parseInt(idx) + 1
         title.innerText = `[${String(current).padStart(2, "0")}]${section.title}`
         title.style.display = "block"
+        title.style.cursor = "pointer"
         titles.push(title)
         title.onclick = function () {
-            GLOBAL.current = current
+            if(GLOBAL.current !== current){
+                GLOBAL.current = current
+            }
         }
         element.appendChild(title)
     }

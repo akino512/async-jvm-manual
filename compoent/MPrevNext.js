@@ -53,7 +53,9 @@ const MPrevNext = () => {
     GLOBAL.currentWatchers.push(() => {
         if (GLOBAL.current === 1) {
             prev.classList.add("not-allowed")
+            next.classList.remove("not-allowed")
         } else if (GLOBAL.current === last) {
+            prev.classList.remove("not-allowed")
             next.classList.add("not-allowed")
         } else {
             prev.classList.remove("not-allowed")
