@@ -13,7 +13,7 @@ GLOBAL.sections.push({
         `)
 
         const p2 = MParagraph()
-        const i2 = MMedia("image-workflow", [MImage("./asset/image/workflow.png")])
+        const i2 = MMedia("image-workflow", [MImage("workflow.png")])
         const t2 = MText(`
         假设有售票流程如image-workflow，需求是编写能应对高并发的售票服务应用。<br />
         本书将基于该模型，分章节逐步解析一般服务端应用开发中常见的问题以及应对方式。<br />

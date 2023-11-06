@@ -11,9 +11,9 @@ GLOBAL.sections.push({
 
         const p2 = MParagraph()
         const i2 = MMedia("image-app-5-3",
-            [MImage("./asset/image/app-5-3(1).png"),
-            MImage("./asset/image/app-5-3(2).png"),
-            MImage("./asset/image/app-5-3(3).png"),
+            [MImage("app-5-3(1).png"),
+            MImage("app-5-3(2).png"),
+            MImage("app-5-3(3).png"),
             ])
         const t2 = MText(`引入Vert.x提供的lib kotlin-coroutines，并用Kotlin重新编写代码，如image-app-5-3。<br />
         首先编写扩展函数
@@ -29,7 +29,7 @@ GLOBAL.sections.push({
         将原本需要传入回调函数的代码，接着await编写。如此便得到了同步化后的异步代码，避免了回调地狱。<br />`)
 
         const p3 = MParagraph()
-        const i3 = MMedia("image-future_await", [MImage("./asset/image/future_await.png")])
+        const i3 = MMedia("image-future_await", [MImage("future_await.png")])
         const t3 = MText(`点击查看await函数，发现其实是一个Future的扩展函数。<br />
         前两行代码很容易理解，成功则返回结果，失败则抛异常。<br />
         如果Future未完成，则调用协程API suspendCancellableCoroutine，调用这个函数会挂起当前协程。<br />
@@ -39,7 +39,7 @@ GLOBAL.sections.push({
         而不会阻塞调度器线程（或线程池），因此保证了程序的非阻塞性。<br />`)
 
         const p4 = MParagraph()
-        const v4 = MMedia("video-app-5-3", [MVideo("./asset/video/app-5-3.mp4")])
+        const v4 = MMedia("video-app-5-3", [MVideo("app-5-3.mp4")])
         const t4 = MText(`执行程序，如video-app-5-3，结果与video-app-4-2一致。<br />
         至此，我们已经得到了一套较为完善的异步代码。<br />`)
 

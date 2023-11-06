@@ -5,7 +5,7 @@ GLOBAL.sections.push({
         const t = MTitle(this.title)
 
         const p1 = MParagraph()
-        const i1 = MMedia("image-app-2-1", [MImage("./asset/image/app-2-1.png")])
+        const i1 = MMedia("image-app-2-1", [MImage("app-2-1.png")])
         const t1 = MText(`
         如果有超过1000人购票，就需要处理售罄的情况。重新编写代码，如image-2-1。<br />
         现在我们加一个余票数判断，仅当ticketCount大于0时，调用扣款服务，如line46。<br />
@@ -14,7 +14,7 @@ GLOBAL.sections.push({
         `)
 
         const p2 = MParagraph()
-        const v2 = MMedia("video-app-2-1", [MVideo("./asset/video/app-2-1.mp4")])
+        const v2 = MMedia("video-app-2-1", [MVideo("app-2-1.mp4")])
         const t2 = MText(`
         执行程序，如video-app-2-1。<br />
         预期输出X的请求却输出负数，说明超过1000张票被售出了，不符合预期。<br />
@@ -25,8 +25,8 @@ GLOBAL.sections.push({
         `)
 
         const p3 = MParagraph()
-        const v3 = MMedia("video-app-2-2", [MVideo("./asset/video/app-2-2.mp4")])
-        const i3 = MMedia("image-app-2-2", [MImage("./asset/image/app-2-2.png")])
+        const v3 = MMedia("video-app-2-2", [MVideo("app-2-2.mp4")])
+        const i3 = MMedia("image-app-2-2", [MImage("app-2-2.png")])
         const t3 = MText(`
         利用原子性的ticketCount，让每个请求都先执行ticketCount.decrementAndGet()，返回值作为编号，即-10~999。<br />
         然后将编号-10~-1视为购票失败，0~999视为购票成功。如此便可避免该问题。编写代码如image-2-2。<br />

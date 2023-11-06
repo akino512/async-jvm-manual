@@ -8,66 +8,88 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="loading" style="position: absolute;top: 0;display: flex;
+  height:100%;width:100%;background: #00000060;z-index: 1;">
+    <h2 style="margin:auto;color:white">
+      loading...
+    </h2>
+  </div>
+  <!-- <div id="app"></div> -->
 </body>
-
 <script>
+  const TOOL = {
+    addScript(src) {
+      const script = document.createElement("script")
+      script.src = src
+      script.async = false
+      document.getElementsByTagName('body')[0].append(script)
+    }
+  }
+
+  const PARAM = {
+    get urlParams() {
+      return new URLSearchParams(window.location.search);
+    },
+    getParam(key) {
+      const params = this.urlParams
+      return this.urlParams.get(key)
+    },
+    setParam(key, value) {
+      const params = this.urlParams
+      params.set(key, value)
+      window.history.replaceState(null, null, '?' + params.toString());
+    },
+    clearParams() {
+      window.history.replaceState(null, null, '?');
+    },
+  }
+
   const GLOBAL = {
+    reload(bookname) {
+      PARAM.clearParams();
+      if (bookname) PARAM.setParam("book", bookname)
+      location.reload()
+    },
+    books: [],
+    get book() {
+      const bk = GLOBAL.books.find((it) =>
+        it.dir == PARAM.getParam("book")
+      )
+      return bk
+    },
+    sections: [],
     get current() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const secNum = parseInt(urlParams.get("section"))
-      return this.sections[secNum - 1] == undefined ? 1 : secNum
+      const secNum = parseInt(PARAM.getParam("section"))
+      return GLOBAL.sections[secNum - 1] == undefined ? 1 : secNum
     },
     set current(value) {
-      window.history.replaceState(null, null, `?section=${value}`);
+      PARAM.setParam("section", value)
       for (const wat of this.currentWatchers) { wat() }
     },
     currentWatchers: [],
-    sections: [],
   }
 </script>
-
-<script src="./compoent/MContent.js"></script>
-<script src="./compoent/MFull.js"></script>
-<script src="./compoent/MImage.js"></script>
-<script src="./compoent/MMedia.js"></script>
-<script src="./compoent/MMenu.js"></script>
-<script src="./compoent/MNavi.js"></script>
-<script src="./compoent/MParagraph.js"></script>
-<script src="./compoent/MPrevNext.js"></script>
-<script src="./compoent/MReference.js"></script>
-<script src="./compoent/MText.js"></script>
-<script src="./compoent/MTitle.js"></script>
-<script src="./compoent/MVideo.js"></script>
-
-<script src="./section/Section1.js"></script>
-<script src="./section/Section2.js"></script>
-<script src="./section/Section3.js"></script>
-<script src="./section/Section4.js"></script>
-<script src="./section/Section5.js"></script>
-<script src="./section/Section6.js"></script>
-<script src="./section/Section7.js"></script>
-<script src="./section/Section8.js"></script>
-<script src="./section/Section9.js"></script>
-<script src="./section/Section10.js"></script>
-<script src="./section/Section11.js"></script>
-<script src="./section/Section12.js"></script>
-
+<script src="./compoent/init.js"></script>
+<script src="./book1/init.js"></script>
+<script src="./book2/init.js"></script>
 <script>
-  const app = document.getElementById("app");
-  app.style.display = "flex"
-  app.style.width = "100%"
-  app.style.minHeight = "100vh"
-
-  const navi = MNavi()
-  const naviBack = MNaviBack()
-  const content = MContent()
-
-  app.appendChild(navi)
-  app.appendChild(naviBack)
-  app.appendChild(content)
-  GLOBAL.current = GLOBAL.current
-
+  const body = document.body
+  const bk = GLOBAL.book
+  if (bk) {
+    bk.read()
+    window.onload = () => {
+      const book = MBook()
+      body.appendChild(book)
+      GLOBAL.current = GLOBAL.current
+      loading.remove()
+    }
+  } else {
+    window.onload = () => {
+      const bookcase = MBookcase(GLOBAL.books)
+      body.appendChild(bookcase)
+      loading.remove()
+    }
+  }
 </script>
 
 </html>

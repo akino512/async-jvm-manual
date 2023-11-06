@@ -4,8 +4,8 @@ GLOBAL.sections.push({
         const element = document.createElement("div")
         const t = MTitle(this.title)
         const p1 = MParagraph()
-        const v1 = MMedia("video-future_coordination", [MVideo("./asset/video/future_coordination.mp4")])
-        const i1 = MMedia("image-future_coordination", [MImage("./asset/image/future_coordination.png")])
+        const v1 = MMedia("video-future_coordination", [MVideo("future_coordination.mp4")])
+        const i1 = MMedia("image-future_coordination", [MImage("future_coordination.png")])
         const t1 = MText(`Vert.x支持Future组合，调用Future.any可以得到一个组合Future，该Future将在其任意子Future完成时完成。<br />
         （Future.all则与之相对，在所有子Future完成时完成）<br />
         如image-future_coordination，利用该特性可以轻松编写一个带有超时处理的余额查询功能。<br />

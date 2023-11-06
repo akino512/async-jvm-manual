@@ -9,10 +9,9 @@ const MPrevNext = () => {
     const prev = document.createElement("div");
     prev.style.display = "flex"
     prev.style.width = "49%"
-    prev.style.height = "120px"
+    prev.style.height = "100px"
     prev.style.justifyContent = "center"
     prev.style.alignItems = "center"
-    prev.style.height = "center"
     prev.style.userSelect = "none"
     prev.innerText = "上一页"
     prev.style.background = "var(--green1)"
@@ -21,10 +20,9 @@ const MPrevNext = () => {
     const next = document.createElement("div");
     next.style.display = "flex"
     next.style.width = "49%"
-    next.style.height = "120px"
+    next.style.height = "100px"
     next.style.justifyContent = "center"
     next.style.alignItems = "center"
-    next.style.height = "center"
     next.style.userSelect = "none"
     next.innerText = "下一页"
     next.style.background = "var(--green1)"

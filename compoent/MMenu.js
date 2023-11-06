@@ -1,14 +1,22 @@
 const MMenu = () => {
     const element = document.createElement("div")
     element.style.width = "100%"
-    element.style.height = "calc(100% - 200px)"
-    element.style.padding = "10px 20px 10px 20px"
+    // element.style.height = "calc(100% - 200px)"
+    element.style.padding = "10px 10px"
     element.style.overflowY = "auto"
     element.style.fontFamily = "monospace"
 
-    const mulu = document.createElement("h2")
-    mulu.innerHTML = "目录"
+    const other = document.createElement("a")
+    other.style.cursor = "pointer"
+    other.innerHTML = "<=返回"
+    other.onclick = () => {
+        GLOBAL.reload()
+    }
 
+    const mulu = document.createElement("h2")
+    mulu.innerHTML = GLOBAL.book.bookname
+
+    element.appendChild(other)
     element.appendChild(mulu)
     const titles = []
     for (const idx in GLOBAL.sections) {
@@ -20,7 +28,7 @@ const MMenu = () => {
         title.style.cursor = "pointer"
         titles.push(title)
         title.onclick = function () {
-            if(GLOBAL.current !== current){
+            if (GLOBAL.current !== current) {
                 GLOBAL.current = current
             }
         }

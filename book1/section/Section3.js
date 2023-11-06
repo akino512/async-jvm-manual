@@ -5,7 +5,7 @@ GLOBAL.sections.push({
         const t = MTitle(this.title)
 
         const p1 = MParagraph()
-        const i1 = MMedia("image-app-1-1", [MImage("./asset/image/app-1-1.png")])
+        const i1 = MMedia("image-app-1-1", [MImage("app-1-1.png")])
         const t1 = MText(`
         根据需求编写Java Spring Boot代码，如image-app-1-1。<br />
         用OkHttp<i id="ref_okhttp"></i>编写一个请求扣款服务的函数requestPayment，如line17。<br />
@@ -13,7 +13,7 @@ GLOBAL.sections.push({
         `)
 
         const p2 = MParagraph()
-        const v2 = MMedia("video-app-1-1", [MVideo("./asset/video/app-1-1.mp4")])
+        const v2 = MMedia("video-app-1-1", [MVideo("app-1-1.mp4")])
         const t2 = MText(`
         有1000张票要出售，那么先假设也正好收到1000个购票请求。则ticketCount的预期最终结果是0。<br />
         执行程序，如video-app-1-1。（上部终端为售票服务，下部终端为客户端，后面章节同此）<br />
@@ -22,8 +22,8 @@ GLOBAL.sections.push({
         `)
 
         const p3 = MParagraph()
-        const v3 = MMedia("video-app-1-2", [MVideo("./asset/video/app-1-2.mp4")])
-        const i3 = MMedia("image-app-1-2", [MImage("./asset/image/app-1-2.png")])
+        const v3 = MMedia("video-app-1-2", [MVideo("app-1-2.mp4")])
+        const i3 = MMedia("image-app-1-2", [MImage("app-1-2.png")])
         const t3 = MText(`
         在Java中，我们可以使用原子型变量来避免该问题，如image-app-1-2。<br />
         执行程序，输出正确结果，如video-app-1-2。<br />
